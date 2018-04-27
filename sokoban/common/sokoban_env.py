@@ -1,6 +1,5 @@
 import numpy as np
 import random
-import tkinter
 import copy
 import gym
 import os
@@ -54,18 +53,6 @@ class SokobanEnv(gym.Env):
     
     def render(self, mode='human', close=False):
         #function to visualise the problem
-        root = tkinter.Tk()
-        CODE = {'W':'#808000',
-       'E':'#FFFFFF',
-       'T':'#008000',
-       'B':'#00FFFF',
-       'P':'#FFFF00',
-       'X':'#808000',
-       'C':'#00FF00'}
-        r = lambda x: CODE[x]
-        x, y = self.world.shape
-        [tkinter.Label(root, text=self.world[i,j], bg=r(self.world[i,j])).grid(row=i,column=j)\
-         for i in range(0,x) for j in range(0,x)]
 #         root.mainloop()
 #         time.sleep(2) 
 #         root.quit()
