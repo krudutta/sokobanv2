@@ -27,7 +27,7 @@ class SokobanEnv(gym.Env):
         # action and observation spaces
         self._action_set = [1, 2, 3, 4]
         self.action_space = spaces.Discrete(len(self._action_set))
-        self.observation_space = None
+        self.observation_space = spaces.Box(low=0, high=255.0, shape=(3, WORLD_DIM, WORLD_DIM))
         
         
     def step(self, a):
@@ -49,27 +49,14 @@ class SokobanEnv(gym.Env):
         self.size = np.shape(self.world)
         self.is_finish = False
         self.curr_step = -1
-        oS = self.size[0]*self.size[1]*4
-        self.observation_space = spaces.Discrete(oS)
-        
-        return self._get_state()
-    
-    def set_level(self, world, positions):
-        self.world = world
-        self.player_pos = positions
-        self.size = np.shape(self.world)
-        self.is_finish = False
-        self.curr_step = -1
-        oS = self.size[0]*self.size[1]*4
-        self.observation_space = spaces.Discrete(oS)
-        
+        return self._get_state()        
     
     def render(self, mode='human', close=False):
         #function to visualise the problem
 #         root.mainloop()
 #         time.sleep(2) 
 #         root.quit()
-    
+
     def _move_y(self, x, y, aux=None, option=1):
         # move the player in left/right direction
         if option == 2 and aux != None: #encountered a box
