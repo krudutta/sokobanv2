@@ -56,7 +56,7 @@ class SokobanEnv(gym.Env):
 #         root.mainloop()
 #         time.sleep(2) 
 #         root.quit()
-    
+
     def _move_y(self, x, y, aux=None, option=1):
         # move the player in left/right direction
         if option == 2 and aux != None: #encountered a box
